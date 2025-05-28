@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { View, StyleSheet, ActivityIndicator, Alert } from 'react-native';
-import { Stripe } from '@stripe/stripe-react-native';
-
+import { View, StyleSheet, ActivityIndicator, Alert, Text, TouchableOpacity } from 'react-native';
+import Stripe from '@stripe/stripe-react-native';
 interface PaymentScreenProps {
   clientSecret: string;
   amount: number;
@@ -22,8 +21,7 @@ export const PaymentScreen = ({ clientSecret, amount }: PaymentScreenProps) => {
         merchantDisplayName: 'ACMS donation',
         customFlow: true,
         allowsDelayedPaymentMethods: true,
-        merchantIdentifier: 'merchant.com.yourapp',
-        returnURL: 'yourapp://stripe-redirect',
+        returnURL: 'acms://stripe-redirect',
         paymentIntentClientSecret: clientSecret,
       });
 

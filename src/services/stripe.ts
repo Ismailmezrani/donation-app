@@ -1,7 +1,5 @@
-import { Stripe } from '@stripe/stripe-react-native';
+import Stripe from '@stripe/stripe-react-native';
 import { PermissionsAndroid } from 'react-native';
-
-export const stripe = Stripe;
 
 export const initializeStripe = async () => {
     async function init() {
@@ -24,9 +22,8 @@ export const initializeStripe = async () => {
         } catch {}
       }
       init();
-  await stripe.setOptions({
+  await Stripe.initStripe({
     publishableKey: 'pk_test_51ROGURQ3cCv4PTlbdop0BJSuj5x7ziBs0GH2qD1BLhZ510SV8JtS6jknHhZNMGabVtvYG59xhflIgJl0tVjesa7v00uiXOcAX7',
-    merchantIdentifier: 'merchant.com.acms',
     urlScheme: 'acms',
   });
 };
